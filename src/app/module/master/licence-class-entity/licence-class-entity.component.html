@@ -1,0 +1,30 @@
+<master-app></master-app>
+<div class="list">
+    <div class="header">
+        <h3>Licence class add</h3>
+    </div>
+    <div class="custom-form">
+        <form [formGroup]="licenceClassFrom" class="row justify-content-center">
+            <div class="col-lg-5 form-field-bg">
+                <mat-form-field appearance="outline">
+                    <mat-label>Vehicle class name</mat-label>
+                    <input matInput placeholder="Vehicle class name" name="className" formControlName="className">
+                    <mat-icon matSuffix>
+                        <img src="./assets/images/chassies-icon.svg" />
+                    </mat-icon>
+                </mat-form-field>
+                <mat-form-field appearance="outline">
+                    <mat-label>Vehicle rank</mat-label>
+                    <input matInput placeholder="Vehicle rank" type="number" id="associatedWeight" name="associatedWeight" formControlName="associatedWeight">
+                    <mat-icon matSuffix>
+                        <img src="./assets/images/chassies-icon.svg" />
+                    </mat-icon>
+                </mat-form-field>
+                <div class="text-center">
+                    <a mat-button class="save" (click)="licenceClassAdd()" [disabled]="!licenceClassFrom.valid" *ngIf="!licenceClassId">Save</a>
+                    <a mat-button class="save" (click)="licenceClassEdit()" [disabled]="!licenceClassFrom.valid" *ngIf="licenceClassId">Edit</a>
+                </div>
+            </div>
+        </form>
+    </div>
+</div>

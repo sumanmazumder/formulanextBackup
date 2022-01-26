@@ -1,0 +1,119 @@
+<vendors-root></vendors-root>
+<div class="list">
+  <div class="header">
+    <h3>Owner List</h3>
+    <div class="header-right">
+      <form class="example-form">
+        <!-- <mat-form-field class="example-full-width" appearance="fill">
+            <mat-label>Search for list</mat-label>
+            <input matInput placeholder="Search for owner list" type="search">
+          </mat-form-field> -->
+        <mat-form-field appearance="outline" class="search_list">
+          <mat-label>Search for list</mat-label>
+          <input matInput (keyup)="applyFilter($event)" placeholder="Search for owner list" #input>
+        </mat-form-field>
+      </form>
+    </div>
+  </div>
+
+  <div class="custom-table">
+
+
+
+    <mat-table [dataSource]="dataSource" multiTemplateDataRows matSort class="" >
+      <!-- <ng-container matColumnDef="{{column}}" *ngFor="let column of columnsToDisplay">
+          <mat-header-cell *matHeaderCellDef> {{column}} </mat-header-cell>
+          <mat-cell *matCellDef="let element"> {{element[column]}}</mat-cell>
+        </ng-container> -->
+
+      <ng-container matColumnDef="id" >
+        <mat-header-cell *matHeaderCellDef mat-sort-header> No </mat-header-cell>
+        <mat-cell *matCellDef="let tableData"> {{tableData[0]?.id}} </mat-cell>
+      </ng-container>
+      <ng-container matColumnDef="name" >
+        <mat-header-cell *matHeaderCellDef mat-sort-header> Name </mat-header-cell>
+        <mat-cell *matCellDef="let tableData"> {{tableData[1]?.fullName}} </mat-cell>
+      </ng-container>
+      <!-- <ng-container matColumnDef="name">
+          <th mat-header-cell *matHeaderCellDef mat-sort-header> Name </th>
+          <td mat-cell *matCellDef="let tableData"> {{tableData.name}} </td>
+        </ng-container> -->
+      <ng-container matColumnDef="number">
+        <mat-header-cell *matHeaderCellDef mat-sort-header> Number </mat-header-cell>
+        <mat-cell *matCellDef="let tableData"> {{tableData[1]?.contact.primary.contactNo}} </mat-cell>
+      </ng-container>
+      <ng-container matColumnDef="status">
+        <mat-header-cell *matHeaderCellDef mat-sort-header> Status </mat-header-cell>
+        <mat-cell *matCellDef="let tableData"> {{tableData[0]?.isActive}} </mat-cell>
+      </ng-container>
+      <ng-container matColumnDef="action">
+        <mat-header-cell *matHeaderCellDef mat-sort-header> Action </mat-header-cell>
+        <mat-cell *matCellDef="let tableData">
+          {{tableData?.action}}
+          <button mat-icon-button [matMenuTriggerFor]="menu">
+            <svg xmlns="http://www.w3.org/2000/svg" width="26.083" height="5.453" viewBox="0 0 26.083 5.453">
+              <g id="more" transform="matrix(0.017, 1, -1, 0.017, 274.359, -955.48)">
+                <circle id="Ellipse_2" data-name="Ellipse 2" cx="2.5" cy="2.5" r="2.5" transform="translate(951 265)" fill="#f48634"/>
+                <circle id="Ellipse_3" data-name="Ellipse 3" cx="2.5" cy="2.5" r="2.5" transform="translate(951 275)" fill="#f48634"/>
+                <circle id="Ellipse_4" data-name="Ellipse 4" cx="2.5" cy="2.5" r="2.5" transform="translate(951 286)" fill="#f48634"/>
+              </g>
+            </svg>
+          </button>
+          <mat-menu #menu="matMenu">
+            <button mat-menu-item><span class="mat-icon"><img src="assets/images/edit.svg" alt=""></span>
+              Edit</button>
+            <!-- <button mat-menu-item (click)="view(tableData.id)"><span class="mat-icon"><img src="assets/images/view.svg"
+                  alt="" ></span>View</button> -->
+            <button mat-menu-item (click)="delete(tableData.id)"><span class="mat-icon"><img src="assets/images/delete.svg"
+                  alt=""></span>Delete</button>
+          </mat-menu>
+        </mat-cell>
+
+      </ng-container>
+
+      <ng-container matColumnDef="expandedDetail">
+        <div *matCellDef="let element" class="mat-custom-cell">
+          <div class="example-element-detail" [@detailExpand]="element == expandedElement ? 'expanded' : 'collapsed'">
+            <!-- <div class="example-element-diagram"> -->
+            <div class="example-element-description">
+              <!-- <div *ngFor="let item of element.description"> -->
+                <div>
+                  <p *ngIf="element?.brokers == !null"><span>Number of vehicles :</span> {{element?.brokers}}</p>
+                  <p *ngIf="element?.brokers == null"><span>Number of vehicles :</span> 0</p>
+
+                  <p *ngIf="element?.vehicles == !null"><span>Number of broker :</span> {{element?.vehicles}}</p>
+                  <p *ngIf="element?.vehicles == null"><span>Number of broker :</span> 0</p>
+
+                  <p *ngIf="element?.drivers == !null"><span>Number of driver :</span> {{element?.drivers}}</p>
+                  <p *ngIf="element?.drivers == null"><span>Number of driver :</span> 0</p>
+                </div>
+
+                <a (click)="view(item.ownerDetailsId)" mat-button class="view">View</a>
+              </div>
+
+          </div>
+        </div>
+      </ng-container>
+      <tr class="mat-row" *matNoDataRow>
+        <td class="mat-cell" colspan="4">No data matching the filter "{{input.value}}"</td>
+      </tr>
+      <mat-header-row *matHeaderRowDef="columnsToDisplay"></mat-header-row>
+      <mat-row *matRowDef="let element; columns: columnsToDisplay;" class="example-element-row"
+        [class.example-expanded-row]="expandedElement === element"
+        (click)="expandedElement = expandedElement === element ? null : element">
+      </mat-row>
+      <mat-row *matRowDef="let row; columns: ['expandedDetail']" class="example-detail-row"></mat-row>
+      <!-- <div *matRowDef="let row; columns: ['expandedDetail']" class="example-detail-row"></div> -->
+
+    </mat-table>
+    <!-- <mat-paginator 
+          [length]="dataSource.length"
+          [pageSize]="10"
+          [pageSizeOptions]="[5, 10, 20]"
+          >
+  </mat-paginator> -->
+    <mat-paginator [pageSizeOptions]="[5, 10, 20]" showFirstLastButtons aria-label="Select page of periodic tableData">
+    </mat-paginator>
+  </div>
+  <a class="addList" (click)="addOwner('owner')"><img src="assets/images/feather-plus.svg"/></a>
+</div>

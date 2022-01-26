@@ -1,0 +1,33 @@
+@import '../../../styles.scss';
+
+.login{
+    height: 100%;
+    .container-fluid{
+        height: 100%;
+        .row{
+            height: 100%;
+        }
+    }
+    .login-left{
+        background: #000000;
+        padding: 0px 150px;
+        h1{
+            color: #ffffff;
+            font-size: 30px;
+            font-weight: 300;
+            margin-top: 30px;
+        }
+    }
+}
+.example-form{
+    width: 100%;
+}
+.mat-form-field{
+    width: 100%;
+}
+a{
+    background: $primary_color !important;
+    margin-top: 30px;
+    padding: 0px 50px;
+    color: #000000 !important;
+}

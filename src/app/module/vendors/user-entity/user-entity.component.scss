@@ -1,0 +1,25 @@
+@import '../vendors.component.scss';
+
+.custom-form-right, .custom-form-left{
+    background-color: #fff;
+    @extend %border-radius;
+}
+.custom-form-right{
+    padding-top: 15px;
+    // padding-bottom: 15px;
+}
+.custom-form-left{padding: 15px;}
+.custom-form-left h3{text-align: center; font-weight: 600;}
+
+.mat-form-field-wrapper{
+    padding-bottom: 15px;
+}
+.image{
+    width: 105px;
+    height: 105px;
+    border-radius: 50%;
+    background-color: $sub_secondary_color;
+    display: table;
+    margin: 0 auto;
+    margin-bottom: 30px;
+}
