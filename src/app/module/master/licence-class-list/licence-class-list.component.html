@@ -1,0 +1,76 @@
+<!-- <p>licence-class-list works!</p> -->
+
+<app-loader></app-loader>
+<master-app></master-app>
+<div class="list">
+    <div class="header">
+        <h3>Licence class list</h3>
+        <div class="header-right">
+            <form class="example-form">
+                <mat-form-field appearance="outline" class="search_list">
+                    <mat-label>Search for list</mat-label>
+                    <input matInput (keyup)="applyFilter($event)" placeholder="Search for owner list" #input>
+                </mat-form-field>
+            </form>
+        </div>
+    </div>
+    <div class="custom-table withoutArrow">
+        <mat-table mat-table [dataSource]="licenceClassTable">
+
+
+            <ng-container matColumnDef="id">
+                <mat-header-cell *matHeaderCellDef> id </mat-header-cell>
+                <mat-cell *matCellDef="let element"> {{element.id}} </mat-cell>
+            </ng-container>
+
+
+            <ng-container matColumnDef="className">
+                <mat-header-cell *matHeaderCellDef> Licence Class </mat-header-cell>
+                <mat-cell *matCellDef="let element"> {{element.className}} </mat-cell>
+            </ng-container>
+
+            <ng-container matColumnDef="status">
+                <mat-header-cell *matHeaderCellDef> Status </mat-header-cell>
+                <mat-cell *matCellDef="let element"> {{element.isActive}} </mat-cell>
+            </ng-container>
+
+            <ng-container matColumnDef="associatedWeight">
+                <mat-header-cell *matHeaderCellDef> Rank </mat-header-cell>
+                <mat-cell *matCellDef="let element"> {{element.associatedWeight}} </mat-cell>
+            </ng-container>
+
+            <ng-container matColumnDef="action">
+                <mat-header-cell *matHeaderCellDef> Action </mat-header-cell>
+                <mat-cell *matCellDef="let element">
+                    <button mat-icon-button [matMenuTriggerFor]="menu">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="26.083" height="5.453" viewBox="0 0 26.083 5.453">
+                          <g id="more" transform="matrix(0.017, 1, -1, 0.017, 274.359, -955.48)">
+                            <circle id="Ellipse_2" data-name="Ellipse 2" cx="2.5" cy="2.5" r="2.5" transform="translate(951 265)" fill="#f48634"/>
+                            <circle id="Ellipse_3" data-name="Ellipse 3" cx="2.5" cy="2.5" r="2.5" transform="translate(951 275)" fill="#f48634"/>
+                            <circle id="Ellipse_4" data-name="Ellipse 4" cx="2.5" cy="2.5" r="2.5" transform="translate(951 286)" fill="#f48634"/>
+                          </g>
+                        </svg>
+                      </button>
+                      <mat-menu #menu="matMenu">
+                        <button mat-menu-item (click)="edit(element.id)"><span class="mat-icon"><img src="assets/images/view.svg"
+                              alt="" ></span>Edit</button>
+                        <button mat-menu-item (click)="delete(element.id)"><span class="mat-icon"><img src="assets/images/delete.svg"
+                              alt=""></span>Delete</button>
+                      </mat-menu>
+                </mat-cell>
+            </ng-container>
+
+
+            <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
+            <mat-row *matRowDef="let row; columns: displayedColumns;" class="example-element-row"></mat-row>
+        </mat-table>
+
+        <mat-paginator [pageSizeOptions]="[10, 20, 30]" showFirstLastButtons aria-label="Select page of periodic elements">
+        </mat-paginator>
+    </div>
+
+
+    <a class="addList" [routerLink]="['/dashboard/master/licenceClassEntity']">
+        <img src="assets/images/feather-plus.svg" />
+    </a>
+</div>

@@ -1,0 +1,289 @@
+
+@import '../../../styles.scss'; 
+.header{
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin: 15px 0px;
+    h3{
+      font-size: 16px;
+      text-transform: uppercase;
+      margin-bottom: 0px;
+      font-weight: 600;
+}
+}
+.list{
+    padding: 0px 30px;
+}
+.mat-table {
+    width: 100%;
+  }
+
+
+.custom-table{
+    padding-bottom: 60px;
+    .mat-table{
+        background-color: transparent;
+    }
+    .mat-header-cell{
+        color: #000 !important;
+        font-size: $normal-font - 1px;
+        text-transform: capitalize;
+    }
+    .mat-header-row{
+        border:0px;
+    }
+    .mat-row{
+        border:0px;
+        position: relative;
+        &:after{
+            content: "";
+            position: absolute;
+            width: 30px;
+            height: 30px;
+            border-radius: 50%;
+            top: 9px;
+            right: 10px;
+            min-height: auto;
+            background: #BBBBBB url(../../../assets/images/arrow.svg)no-repeat center;
+            transition: 1s;
+        }
+    }
+    .mat-custom-cell{
+        flex:0 0 100%;
+        background-color: #ffffff;
+        .example-element-detail{
+            width: 100%;
+        }
+        .example-element-description{
+            width: 100%;
+            padding-top: 5px;
+            padding-bottom: 5px;
+            > div{
+                display: flex;
+                align-items: center;
+                width: 80%;
+                justify-content: space-between;
+                >div{
+                    display: flex;
+                    align-items: center;
+                }
+                p{
+                    margin-right: 15px;
+                    border-right: 1px solid $gray_color;
+                    padding-right: 15px;
+                    margin-bottom: 0px;
+                    font-size: 16px;
+                    color: #35363A;
+                    font-weight: 600;
+                    &:last-child{
+                        margin-right: 0px;
+                        padding-right: 0px;
+                        border-right: 0px;
+                    }
+                    span{
+                        font-weight: 400;
+                    }
+                }
+            }
+            .view{
+                @include btn_style($bg_color: $primary_color, $color : #ffffff, $padding: 0px 30px);
+            }
+        }
+    }
+    .example-detail-row{
+        margin-bottom: 15px;
+        border-radius: 0px 0px 10px 10px;
+        overflow: hidden;
+        &:after{
+            display: none;
+        }
+    }
+    .example-element-row{
+        transition: 0.5s;
+        &:hover{
+            background-color: $primary_color !important;
+            .mat-cell{
+                color:#ffffff;
+            }
+            svg{
+                circle{fill: #ffffff;}
+            }
+        }
+        border-radius: 10px 10px 10px 10px;
+        background-color: #ffffff;
+        .mat-cell{
+            color: #000000;
+            font-size: $normal-font - 2px;
+            font-weight: 400;
+        }
+    }
+    .example-element-row.example-expanded-row{
+        background-color: $primary_color !important;
+        border-radius: 10px 10px 0px 0px;
+        &:after{
+            background: #000 url(../../../assets/images/arrow.svg) no-repeat center;
+            transform: rotate(90deg);
+        }
+        .mat-cell{
+            color:#ffffff;
+        }
+        svg{
+            circle{fill: #ffffff;}
+        }
+    }
+
+    // .mat-menu-content{
+       
+        
+        
+    // }
+}
+.mat-menu-item{
+    padding: 0px 8px;
+}
+.mat-icon{
+    width: 40px;
+    height: 40px;
+    border-radius: 5px;
+    background-color: rgba(0,0,0,0.1);
+    display: inline-block;
+    margin-right: 10px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    float: left;
+}
+
+
+.mat-row.example-detail-row {
+    min-height: 0;
+  }
+  
+  /* .mat-row.example-element-row:not(.example-expanded-row):hover {
+    background: #777;
+  }
+  
+  .mat-row.example-element-row:not(.example-expanded-row):active {
+    background: #efefef;
+  } */
+  
+  .example-element-row .mat-cell {
+    border-bottom-width: 0;
+  }
+  
+  .example-element-detail {
+    overflow: hidden;
+    display: flex;
+  }
+  
+    
+  .example-element-symbol {
+    font-weight: bold;
+    font-size: 40px;
+    line-height: normal;
+  }
+  
+  .example-element-description {
+    padding: 16px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+  }
+  
+  .example-element-description-attribution {
+    opacity: 0.5;
+  }
+  .mat-paginator {
+    display: block;
+    position: fixed;
+    width: 96%;
+    right: 0px;
+    bottom: 0px;
+    box-shadow: 0px 0px 30px #f1f1f1;
+    .mat-paginator-container{
+        justify-content: space-between;
+    }
+    .mat-form-field-infix{
+        padding-top: 0px;
+    }
+    .mat-paginator-page-size-select{
+        margin-top: 0px;
+    }
+}
+
+
+.save{
+    @include btn_style($bg_color: $primary_color, $color : #ffffff, $padding: 0px 30px);
+}
+.mat-tab-nav-bar{
+    background: #ffffff;
+}
+// .mat-form-field-appearance-fill .mat-form-field-flex{
+//     background-color: transparent;
+//     border:1px solid rgb(197, 197, 197);
+//     border-radius: 5px !important;
+//     overflow: hidden;
+//     padding-top: 0px !important;
+// }
+.mat-form-field-suffix{
+    top: -3px !important;
+}
+.mat-form-field{
+    width: 100%;
+}
+
+.broker-row{
+    margin-bottom: 10px;
+}
+
+// header css
+header{
+    padding: 5px 0px 5px 30px;
+    background-color: white;
+    border-bottom: 1px solid $gray_color;
+    width: 100%;
+    float: left;
+    h1.title{
+        font-weight: 600;
+        font-size: 24px;
+        color: $primary_color;
+        margin-bottom: 0px;
+    }
+    p{
+        font-size: 14px;
+        margin-bottom: 0px;
+    }
+    .notification{
+        margin-right: 15px;
+        span{
+            background-color: $primary_color;
+            border-radius: 3px;
+            color: #fff;
+            line-height: 10px;
+            padding: 5px 8px 4px;
+            position: relative;
+            left: -11px;
+            top: -6px;
+            font-size: 12px;
+            border: 2px solid #fff;
+        }
+    }
+    .profile {
+        .profile-image{
+            border-radius: 15px;
+            overflow: hidden;
+            box-shadow: 0px 10px 15px #c9c9c9;
+            margin-right: 15px;
+        }
+        p{
+            font-weight: 600;
+            font-size: 16px;
+            margin-right: 10px;
+        }
+        button{
+            background-color: transparent;
+            border:0px;
+        }
+    }
+}

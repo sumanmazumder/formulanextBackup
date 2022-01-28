@@ -1,0 +1,260 @@
+<!-- <p>vehicle-entities works!</p> -->
+<Vehicles-app></Vehicles-app>
+<div class="list">
+    <div class="header">
+        <h3>Vehicles add </h3>
+        <div class="header-right">
+            <a mat-button class="save" (click)="vehiclesFromAdd()" [disabled]="!vehiclesFrom.valid">Save</a>
+        </div>
+    </div>
+    <div class="custom-form">
+        <form [formGroup]="vehiclesFrom" class="row justify-content-center">
+            <div class="col-lg-12 mb-5">
+                <div class="form-field-bg padding-left padding-right">
+
+
+                    <div class="row">
+                        <div class="col-lg-4">
+                            <mat-form-field appearance="outline">
+                                <mat-label>Vehicle Type</mat-label>
+                                <select matNativeControl formControlName="vehicleTypeId" name="vehicleTypeId">
+                                    <option *ngFor="let vehicleTypeList of vehicleTypeList" [value]="vehicleTypeList.id">
+                                        {{vehicleTypeList.model}}
+                                    </option>
+                                </select>
+
+                            </mat-form-field>
+                        </div>
+                        <div class="col-lg-4">
+                            <mat-form-field appearance="outline">
+                                <mat-label>Vehicle Variant</mat-label>
+                                <select matNativeControl formControlName="vehicleVariantId" name="vehicleVariantId">
+                                    <option *ngFor="let vehiclesVariantListed of vehiclesVariantListed" [value]="vehiclesVariantListed.id">
+                                        {{vehiclesVariantListed.name}}
+                                    </option>
+                                </select>
+
+                            </mat-form-field>
+                        </div>
+                        <div class="col-lg-4">
+                            <mat-form-field appearance="outline">
+                                <mat-label>Ownership</mat-label>
+                                <select matNativeControl formControlName="ownership" name="ownership">
+                                    <option *ngFor="let ownership of ownership" [value]="ownership.value">
+                                        {{ownership.viewValue}}
+                                    </option>
+                                </select>
+
+                            </mat-form-field>
+                        </div>
+                        <div class="col-lg-12">
+                            <!-- <mat-form-field appearance="outline">
+                                <mat-label>Licence Classes</mat-label>
+                                <select matNativeControl formControlName="licenceClasses" name="licenceClasses">
+                                    <option *ngFor="let licenceClasses of licenceClasses" [value]="licenceClasses.value">
+                                        {{licenceClasses.viewValue}}
+                                    </option>
+                                </select>
+                            </mat-form-field> -->
+                            <!-- <mat-form-field class="example-chip-list" appearance="outline">
+                                <mat-label>Licence Class</mat-label>
+                                <mat-chip-list #chipList aria-label="Fruit selection">
+                                    <mat-chip *ngFor="let fruit of fruits" (removed)="remove(fruit)">
+                                        {{fruit}}
+                                        <button matChipRemove>
+                                            <mat-icon>cancel</mat-icon>
+                                        </button>
+                                    </mat-chip>
+                                    <input placeholder="New licence class..." #fruitInput [formControl]="fruitCtrl" [matAutocomplete]="auto5" [matChipInputFor]="chipList"
+                                        [matChipInputSeparatorKeyCodes]="separatorKeysCodes">
+                                </mat-chip-list>
+                                <mat-autocomplete #auto5="matAutocomplete" (optionSelected)="selected($event)">
+                                    <mat-option *ngFor="let fruit of filteredFruits" [value]="fruit">
+                                        {{fruit}}
+                                    </mat-option>
+                                </mat-autocomplete>
+                            </mat-form-field> -->
+                            
+                            <mat-form-field class="example-chip-list" appearance="fill">
+                                <mat-label>Licence Class</mat-label>
+                                <mat-chip-list #chipList aria-label="Fruit selection">
+                                  <mat-chip
+                                    *ngFor="let fruit of fruits"
+                                    (removed)="remove(fruit)">
+                                    {{fruit.name}}
+                                    <button matChipRemove>
+                                      <mat-icon>cancel</mat-icon>
+                                    </button>
+                                  </mat-chip>
+                                  <input
+                                    placeholder="New fruit..."
+                                    #fruitInput
+                                    [formControl]="fruitCtrl"
+                                    [matAutocomplete]="auto5"
+                                    [matChipInputFor]="chipList"
+                                    [matChipInputSeparatorKeyCodes]="separatorKeysCodes"
+                                    >
+                                </mat-chip-list>
+                                <mat-autocomplete #auto5="matAutocomplete" (optionSelected)="selected($event)">
+                                  <mat-option *ngFor="let fruit of licenceClass" [value]="fruit.id">
+                                    {{fruit.className}}
+                                  </mat-option>
+                                </mat-autocomplete>
+                              </mat-form-field>
+                        </div>
+
+                        <div class="col-lg-4">
+                            <mat-form-field appearance="outline">
+                                <mat-label>Owner</mat-label>
+                                <input type="text" matInput [formControl]="ownerId" [matAutocomplete]="auto">
+                                <mat-autocomplete #auto="matAutocomplete" [displayWith]="displayFn">
+                                    <mat-option *ngFor="let option of filteredOwnerOptions | async" [value]="option">
+                                        {{option.name}}
+                                    </mat-option>
+                                </mat-autocomplete>
+                                <mat-icon matSuffix>
+                                    <img src="./assets/images/user-icon.svg" />
+                                </mat-icon>
+                            </mat-form-field>
+                        </div>
+                        <div class="col-lg-4">
+                            <mat-form-field appearance="outline">
+                                <mat-label>Broker</mat-label>
+                                <input type="text" matInput [formControl]="brokerId" [matAutocomplete]="auto2">
+                                <mat-autocomplete #auto2="matAutocomplete" [displayWith]="displayFn2">
+                                    <mat-option *ngFor="let option of filteredBrokerOptions | async" [value]="option">
+                                        {{option.name}}
+                                    </mat-option>
+                                </mat-autocomplete>
+                                <mat-icon matSuffix>
+                                    <img src="./assets/images/user-icon.svg" />
+                                </mat-icon>
+                            </mat-form-field>
+                        </div>
+                        <div class="col-lg-4">
+                            <mat-form-field appearance="outline">
+                                <mat-label>Chassis No</mat-label>
+                                <input type="text" matInput placeholder="Chassis No" name="chassisNo" formControlName="chassisNo">
+                                <mat-icon matSuffix>
+                                    <img src="./assets/images/chassies-icon.svg" />
+                                </mat-icon>
+                            </mat-form-field>
+                        </div>
+                        <div class="col-lg-4">
+                            <mat-form-field appearance="outline">
+                                <mat-label>Engine No</mat-label>
+                                <input type="text" matInput placeholder="Engine No" name="engineNo" formControlName="engineNo">
+                                <mat-icon matSuffix>
+                                    <img src="./assets/images/engine-icon.svg" />
+                                </mat-icon>
+                            </mat-form-field>
+                        </div>
+                        <div class="col-lg-4">
+                            <mat-form-field appearance="outline">
+                                <mat-label>Plate No</mat-label>
+                                <input type="text" matInput placeholder="Plate No" name="plateNo" formControlName="plateNo">
+                                <mat-icon matSuffix>
+                                    <img src="./assets/images/plate-icon.svg" />
+                                </mat-icon>
+                            </mat-form-field>
+                        </div>
+                        <div class="col-lg-4">
+                            <mat-form-field appearance="outline">
+                                <mat-label>RC No</mat-label>
+                                <input type="text" matInput placeholder="RC No" name="rcNo" formControlName="rcNo">
+                                <mat-icon matSuffix>
+                                    <img src="./assets/images/chassies-icon.svg" />
+                                </mat-icon>
+                            </mat-form-field>
+                        </div>
+                        <div class="col-lg-4">
+                            <mat-form-field appearance="outline">
+                                <mat-label>RC Expiry</mat-label>
+                                <input matInput [matDatepicker]="rcExpiry">
+                                <mat-datepicker-toggle matSuffix [for]="rcExpiry"></mat-datepicker-toggle>
+                                <mat-datepicker #rcExpiry></mat-datepicker>
+                            </mat-form-field>
+                        </div>
+                        <div class="col-lg-4">
+                            <mat-form-field appearance="outline">
+                                <mat-label>Registration date</mat-label>
+                                <input matInput [matDatepicker]="registrationDate">
+                                <mat-datepicker-toggle matSuffix [for]="registrationDate"></mat-datepicker-toggle>
+                                <mat-datepicker #registrationDate></mat-datepicker>
+                            </mat-form-field>
+                        </div>
+                        <div class="col-lg-4">
+                            <mat-form-field appearance="outline">
+                                <mat-label>Vehicle Age</mat-label>
+                                <input type="text" matInput placeholder="Vehicle Age" name="vehicleAge" formControlName="vehicleAge">
+                                <mat-icon matSuffix>
+                                    <img src="./assets/images/vehicles-age.svg" />
+                                </mat-icon>
+                            </mat-form-field>
+                        </div>
+                        <div class="col-lg-4">
+                            <mat-form-field appearance="outline">
+                                <mat-label>Fitness Expiry</mat-label>
+                                <input matInput [matDatepicker]="fitnessExpiry">
+                                <mat-datepicker-toggle matSuffix [for]="fitnessExpiry"></mat-datepicker-toggle>
+                                <mat-datepicker #fitnessExpiry></mat-datepicker>
+                            </mat-form-field>
+                        </div>
+                        <div class="col-lg-4">
+                            <mat-form-field appearance="outline">
+                                <mat-label>Insurance Expiry</mat-label>
+                                <input matInput [matDatepicker]="insuranceExpiry">
+                                <mat-datepicker-toggle matSuffix [for]="insuranceExpiry"></mat-datepicker-toggle>
+                                <mat-datepicker #insuranceExpiry></mat-datepicker>
+                            </mat-form-field>
+                        </div>
+                        <div class="col-lg-4">
+                            <mat-form-field appearance="outline">
+                                <mat-label>Tax Expiry</mat-label>
+                                <input matInput [matDatepicker]="taxExpiry">
+                                <mat-datepicker-toggle matSuffix [for]="taxExpiry"></mat-datepicker-toggle>
+                                <mat-datepicker #taxExpiry></mat-datepicker>
+                            </mat-form-field>
+                        </div>
+                        <div class="col-lg-4">
+                            <mat-form-field appearance="outline">
+                                <mat-label>Pucc Expiry</mat-label>
+                                <input matInput [matDatepicker]="puccExpiry">
+                                <mat-datepicker-toggle matSuffix [for]="puccExpiry"></mat-datepicker-toggle>
+                                <mat-datepicker #puccExpiry></mat-datepicker>
+                            </mat-form-field>
+                        </div>
+                        <div class="col-lg-4">
+                            <mat-form-field appearance="outline">
+                                <mat-label>National Permit No</mat-label>
+                                <input type="number" matInput placeholder="National Permit No" name="nationalPermitNo" formControlName="nationalPermitNo">
+                                <mat-icon matSuffix>
+                                    <img src="./assets/images/chassies-icon.svg" />
+                                </mat-icon>
+                            </mat-form-field>
+                        </div>
+                        <div class="col-lg-4">
+                            <mat-form-field appearance="outline">
+                                <mat-label>National Permit Expiry</mat-label>
+                                <input matInput [matDatepicker]="nationalPermitExpiry">
+                                <mat-datepicker-toggle matSuffix [for]="nationalPermitExpiry"></mat-datepicker-toggle>
+                                <mat-datepicker #nationalPermitExpiry></mat-datepicker>
+                            </mat-form-field>
+                        </div>
+                        <div class="col-lg-4">
+                            <mat-form-field appearance="outline">
+                                <mat-label>brokers</mat-label>
+                                <select matNativeControl formControlName="brokers" name="brokers">
+                                    <option *ngFor="let brokers of brokers" [value]="ownership.value">
+                                        {{brokers.viewValue}}
+                                    </option>
+                                </select>
+
+                            </mat-form-field>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </form>
+    </div>
+</div>

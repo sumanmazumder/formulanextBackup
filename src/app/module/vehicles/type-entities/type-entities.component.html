@@ -1,0 +1,172 @@
+<!-- <p>type-entities works!</p> -->
+<Vehicles-app></Vehicles-app>
+
+<div class="mb-5">
+
+
+
+</div>
+<div class="list">
+
+    <div class="header">
+        <h3>Vehicles Type Add</h3>
+        <a mat-button class="save" (click)="vehiclesTypeAdd()" [disabled]="!vehiclesTypeFrom.valid">Save</a>
+    </div>
+    <div class="custom-form">
+        <form [formGroup]="vehiclesTypeFrom" class="row justify-content-center">
+            <div class="row mb-lg-3 mb-3">
+                <div class="col-lg-12 form-field-bg">
+                    <div class="row">
+
+                        <div class="col-lg-6">
+                            <mat-form-field appearance="outline">
+                                <mat-label>Vehicle Brand Id</mat-label>
+                                <select matNativeControl formControlName="vehicleBrandId" name="vehicleBrandId">
+                                    <option selected disabled>Vehicle Brand Id</option>
+                                    <option *ngFor="let vehicleBrandId of vehiclesBrand" [ngValue]="vehicleBrandId.id">
+                                        {{vehicleBrandId.name}}
+                                    </option>
+                                </select>
+                            </mat-form-field>
+                        </div>
+
+                        <div class="col-lg-6">
+                            <mat-form-field appearance="outline">
+                                <mat-label>Model</mat-label>
+                                <input matInput placeholder="Vehicle Model" id="model" name="model" formControlName="model">
+                                <mat-icon matSuffix>
+                                    <img src="./assets/images/user-icon.svg" />
+                                </mat-icon>
+                            </mat-form-field>
+                        </div>
+                        <div class="col-lg-12">
+                            <!-- <mat-form-field appearance="outline">
+                                <mat-label>Compatible Licence Class</mat-label>
+                                <select matNativeControl formControlName="compatibleLicenceClass" name="compatibleLicenceClass">
+                                    <option selected disabled>Compatible Licence Class</option>
+                                    <option *ngFor="let compatibleLicenceClass of licenceClass" [ngValue]="compatibleLicenceClass">
+                                        {{compatibleLicenceClass}}
+                                    </option>
+                                </select>
+                            </mat-form-field> -->
+                            <mat-form-field class="example-chip-list" appearance="fill">
+                                <mat-label>Licence Class</mat-label>
+                                <mat-chip-list #chipList aria-label="Fruit selection">
+                                  <mat-chip
+                                    *ngFor="let fruit of fruits"
+                                    (removed)="remove(fruit)">
+                                    {{fruit.name}}
+                                    <button matChipRemove>
+                                      <mat-icon>cancel</mat-icon>
+                                    </button>
+                                  </mat-chip>
+                                  <input
+                                    placeholder="New fruit..."
+                                    #fruitInput
+                                    [formControl]="fruitCtrl"
+                                    [matAutocomplete]="auto"
+                                    [matChipInputFor]="chipList"
+                                    [matChipInputSeparatorKeyCodes]="separatorKeysCodes"
+                                    >
+                                </mat-chip-list>
+                                <mat-autocomplete #auto="matAutocomplete" (optionSelected)="selected($event)">
+                                  <mat-option *ngFor="let fruit of licenceClass" [value]="fruit.id">
+                                    {{fruit.className}}
+                                  </mat-option>
+                                </mat-autocomplete>
+                              </mat-form-field>
+                        </div>
+                        <!-- <div class="col-lg-12">
+                            <mat-form-field>
+                                <mat-label>Licence Class</mat-label>
+                                <input matInput type="text" formControlName="compatibleLicenceClass" name="compatibleLicenceClass" [matAutocomplete]="licenceClasses"/>
+                                <mat-autocomplete #licenceClasses="matAutocomplete">
+                                    <mat-option *ngFor="let classes of licenceClass" [value]="classes.id">
+                                        {{classes.className}}
+                                    </mat-option>
+                                </mat-autocomplete>
+                            </mat-form-field>
+                        </div> -->
+                    </div>
+
+
+
+                </div>
+            </div>
+            <div class="col-lg-12  mb-3" formGroupName="capacity">
+                <div class="form-field-bg padding-left padding-right">
+                    <h4>Capacity Vehicles</h4>
+                    <div class="row">
+                        <div class="col-lg-6">
+                            <mat-form-field appearance="outline">
+                                <mat-label>Weight</mat-label>
+                                <input matInput placeholder="Vehicle weight" id="weight" name="weight" formControlName="weight">
+                                <mat-icon matSuffix>
+                                    <img src="./assets/images/user-icon.svg" />
+                                </mat-icon>
+                            </mat-form-field>
+                        </div>
+                        <div class="col-lg-6">
+                            <mat-form-field appearance="outline">
+                                <mat-label>Unit</mat-label>
+                                <select matNativeControl formControlName="unit" name="unit">
+                                    <option value="unit" selected disabled></option>
+                                    <option *ngFor="let unit of units" [value]="unit.id">
+                                        {{unit.unit}}
+                                    </option>
+                                </select>
+                            </mat-form-field>
+                        </div>
+                    </div>
+
+
+                </div>
+            </div>
+            <div class="col-lg-12 mb-5" formGroupName="dimension">
+                <div class="form-field-bg padding-left padding-right">
+                    <h4>Dimension Vehicles</h4>
+                    <div class="row">
+                        <div class="col-lg-6">
+                            <mat-form-field appearance="outline">
+                                <mat-label>Height</mat-label>
+                                <input matInput placeholder="Vehicle weight" id="Height" name="Height" formControlName="Height">
+                                <mat-icon matSuffix>
+                                    <img src="./assets/images/user-icon.svg" />
+                                </mat-icon>
+                            </mat-form-field>
+                        </div>
+                        <div class="col-lg-6">
+                            <mat-form-field appearance="outline">
+                                <mat-label>Width</mat-label>
+                                <input matInput placeholder="Vehicle width" id="width" name="width" formControlName="width">
+                                <mat-icon matSuffix>
+                                    <img src="./assets/images/user-icon.svg" />
+                                </mat-icon>
+                            </mat-form-field>
+                        </div>
+                        <div class="col-lg-6">
+                            <mat-form-field appearance="outline">
+                                <mat-label>Depth</mat-label>
+                                <input matInput placeholder="Vehicle depth" id="depth" name="depth" formControlName="depth">
+                                <mat-icon matSuffix>
+                                    <img src="./assets/images/user-icon.svg" />
+                                </mat-icon>
+                            </mat-form-field>
+                        </div>
+                        <div class="col-lg-6">
+                            <mat-form-field appearance="outline">
+                                <mat-label>Unit</mat-label>
+                                <select matNativeControl formControlName="unit" name="unit">
+                                    <!-- <option value="Unit" selected disabled></option> -->
+                                    <option *ngFor="let unit of units" [value]="unit?.id">
+                                        {{unit?.unit}}
+                                    </option>
+                                </select>
+                            </mat-form-field>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </form>
+    </div>
+</div>

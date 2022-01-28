@@ -1,0 +1,253 @@
+/* You can add global styles to this file, and also import other style files */
+
+html, body { height: 100%; }
+@import '~@angular/material/prebuilt-themes/indigo-pink.css';
+@import url('https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap');
+
+ul{
+    list-style: none;
+    padding: 0px;
+    margin: 0px;
+}
+a{
+    text-decoration: none;
+}
+span{
+    display: inline-block;
+}
+$primary_color: #F48634;
+$secondary_color: #35363A;
+$sub_secondary_color: #274cb1;
+
+$gray_color: #c9c9c9;
+
+$normal_font: 16px;
+
+
+
+// side-panel
+.sidebar.full-width{
+    width: 14% !important;
+    .sidebar-sticky{
+        ul{
+            li{
+                a{
+                    span{
+                        // display: block !important;
+                        left: 56px !important;
+                        width: 100% !important;
+                        opacity: 1 !important;
+                    }
+                }
+            }
+        }
+    }
+    .icon-logo{
+        opacity: 0;
+    }
+    .hover-logo{
+        opacity: 1 !important;
+    }
+}
+
+
+.heading{
+    h2{
+        font-size: 16px;
+        color: $primary_color;
+    }
+    p{
+        font-size: $primary_color;
+    }
+}
+.mat-table.cdk-table{
+    width: 100%;
+}
+
+@mixin btn_style($bg_color, $color, $padding){
+    background-color: $bg_color;
+    color: $color;
+    font-size: 16px;
+    padding: $padding;
+}
+%border-radius{
+    border-radius: 5px;
+}
+
+.mat-button.mat-button-disabled.mat-button-disabled{
+    background-color: #ffffff;
+    color: #cdcdcd;
+    border:1px solid #cdcdcd;
+}
+.search_list.mat-form-field-appearance-outline .mat-form-field-wrapper{
+    padding-bottom: 0px;
+}
+
+// user entity scss
+.custom-form {
+    .mat-form-field-suffix{
+        mat-icon{
+            top:0px;
+            position: relative;
+            img{
+                width: 16px;
+            }
+        }
+    }
+}
+.login{
+    mat-icon{
+        top:-5px;
+        position: relative;
+    }
+}
+
+
+// tab css
+.tabCustomClass{
+    padding-left: 30px;
+    
+    .mat-tab-link{
+        position: relative;
+        opacity: 1;
+        &:after{
+            content:'';
+            position: absolute;
+            width: 100%;
+            bottom: 0px;
+            background-color: $sub_secondary_color;
+            border-radius: 10px 10px 0px 0px;
+            display: none;
+            height: 3px;
+        }
+    }
+    .active-link.mat-tab-link {
+        color: $sub_secondary_color;
+        // border-bottom:3px solid $secondary_color;
+        &:after{
+            display: block;
+        }
+    }
+
+}
+
+// add plus icon
+.addList{
+    width: 50px;
+    height: 50px;
+    background-color: $primary_color;
+    border-radius: 50%;
+    position: fixed;
+    bottom: 60px;
+    right: 30px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    // position: relative;
+    &::before{
+        content:'';
+        position: absolute;
+        width: 100%;
+        height: 100%;
+        background: rgba(224,134,52,0.2);
+        transform: scale(1);
+        animation: circle infinite 2s;
+        animation-timing-function: ease-out;
+        z-index: 1;
+        border-radius: 50%;
+    }
+    &::after{
+        content:'';
+        position: absolute;
+        width: 100%;
+        height: 100%;
+        background: rgba(224,134,52,0.2);
+        transform: scale(1);
+        animation: circle infinite 9s;
+        border-radius: 50%;
+        animation-timing-function: ease-out;
+    }
+}
+@keyframes circle{
+    0%{transform: scale(1); opacity: 1;}
+    100%{transform: scale(1.9); opacity: 0;}
+}
+
+
+// header css
+header{
+    padding: 5px 0px 5px 30px;
+    background-color: white;
+    border-bottom: 1px solid $gray_color;
+    width: 100%;
+    float: left;
+    h1.title{
+        font-weight: 600;
+        font-size: 24px;
+        color: $primary_color;
+        margin-bottom: 0px;
+    }
+    p{
+        font-size: 14px;
+        margin-bottom: 0px;
+    }
+    .notification{
+        margin-right: 15px;
+        span{
+            background-color: $primary_color;
+            border-radius: 3px;
+            color: #fff;
+            line-height: 10px;
+            padding: 5px 8px 4px;
+            position: relative;
+            left: -11px;
+            top: -6px;
+            font-size: 12px;
+            border: 2px solid #fff;
+        }
+    }
+    .profile {
+        .profile-image{
+            border-radius: 15px;
+            overflow: hidden;
+            box-shadow: 0px 10px 15px #c9c9c9;
+            margin-right: 15px;
+        }
+        p{
+            font-weight: 600;
+            font-size: 16px;
+            margin-right: 10px;
+        }
+        button{
+            background-color: transparent;
+            border:0px;
+        }
+    }
+}
+
+// right body css
+.totalBody{
+    padding-left: 30px;
+    width: 100%;
+    float: left;
+    background-color: #f1f1f1;
+    // height: 100vh;
+    min-height: 100vh;
+}
+.routingComponent{
+    width: 100%;
+    float: left;
+}
+
+.list{
+    width: 100%;
+    float: left;
+}
+
+.withoutArrow{
+    .mat-row{
+        &:after{
+            display: none;
+        }
+    }
+}
