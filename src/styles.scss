@@ -251,3 +251,15 @@ header{
         }
     }
 }
+
+ngx-skeleton-loader .loader{
+    background: #ffffff !important;
+    height: 50px !important;
+    border-radius: 10px !important;
+    
+}
+ngx-skeleton-loader .loader.progress:before{
+    background-image: linear-gradient(to right, #ffffff, #fbfbfb, #f7f7f7, #f4f4f4, #f0f0f0, #f0f0f0, #f0f0f0, #f0f0f0, #f4f4f4, #f7f7f7, #fbfbfb, #ffffff) !important;
+    width: 300px !important;
+    background-size: 300px 100% !important;
+}

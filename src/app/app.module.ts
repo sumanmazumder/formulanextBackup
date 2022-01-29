@@ -18,6 +18,7 @@ import { MatInputModule } from '@angular/material/input';
 import {MatButtonModule} from '@angular/material/button';
 import {MatRippleModule, MatNativeDateModule} from '@angular/material/core';
 import { MatIconModule } from '@angular/material/icon';
+import { NgxSkeletonLoaderModule } from 'ngx-skeleton-loader';
 
 // directive
 import { AddClassDirective } from './directives/add-class.directive';
@@ -31,6 +32,7 @@ import { LoaderComponent } from './components/loader/loader.component';
 
 import {MatProgressSpinnerModule} from '@angular/material/progress-spinner';
 import { MatProgressBarModule } from '@angular/material/progress-bar';
+import { ListOfTableComponent } from './components/list-of-table/list-of-table.component';
 
 @NgModule({
   declarations: [
@@ -40,6 +42,7 @@ import { MatProgressBarModule } from '@angular/material/progress-bar';
     AddClassDirective,
     LoginComponent,
     LoaderComponent,
+    ListOfTableComponent,
   ],
   imports: [
     BrowserModule,
@@ -57,6 +60,7 @@ import { MatProgressBarModule } from '@angular/material/progress-bar';
     MatIconModule,
     MatProgressSpinnerModule,
     MatProgressBarModule,
+    NgxSkeletonLoaderModule,
   ],
 
   schemas: [ NO_ERRORS_SCHEMA, CUSTOM_ELEMENTS_SCHEMA ],

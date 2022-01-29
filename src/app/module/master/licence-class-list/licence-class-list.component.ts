@@ -8,7 +8,6 @@ import { MeasurementUnitsService } from '../../../services/measurement-units.ser
 import { LicenceClassService } from '../../../services/licence-class.service';
 
 import { NavigationExtras, Router } from '@angular/router';
-import { LoaderService } from '../../../services/loader.service';
 
 @Component({
   selector: 'app-licence-class-list',
@@ -16,6 +15,10 @@ import { LoaderService } from '../../../services/loader.service';
   styleUrls: ['./licence-class-list.component.scss']
 })
 export class LicenceClassListComponent implements AfterViewInit {
+  public totalLength : number;
+  public loader:boolean = true;
+
+
   displayedColumns: string[] = ['id', 'className', 'status', 'associatedWeight', 'action'];
   licenceClassTable = new MatTableDataSource<interfacTableData>(tableData);
   @ViewChild(MatPaginator) paginator: MatPaginator;
@@ -23,8 +26,7 @@ export class LicenceClassListComponent implements AfterViewInit {
 
   constructor(
     private licenceClassService: LicenceClassService,
-    private _router: Router,
-    private loaderService : LoaderService
+    private _router: Router
   ) { }
 
   ngOnInit(): void {
@@ -34,7 +36,9 @@ export class LicenceClassListComponent implements AfterViewInit {
     // this.loaderService.requestStarted();
     this.licenceClassService.licenceClassList().subscribe(
       (success: any)=>{
-        console.log(success);
+        this.totalLength = success.length;
+        this.loader = false;
+        // console.log(success.length);
         // this.loaderService.requestEnded();
         this.licenceClassTable = new MatTableDataSource<interfacTableData>(success);
         console.log(this.licenceClassTable.filteredData);

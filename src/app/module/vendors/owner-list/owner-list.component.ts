@@ -29,7 +29,6 @@ export class OwnerListComponent implements AfterViewInit {
   public userEntityId: any;
   public allData: any;
 
-  public sss:any;
   @ViewChild(MatPaginator) paginator: MatPaginator;
   @ViewChild(MatSort) sort: MatSort;
   // dataSource: MatTableDataSource
@@ -94,6 +93,8 @@ export class OwnerListComponent implements AfterViewInit {
   ownerList() {
     this.ownerListService.ownerList().subscribe(
       (success: any) => {
+        // console.log(success);
+        
         this.allData = success;
         success.forEach(element => {
           this.UserEntitiesService.getUserData(element.userEntityId).subscribe(
@@ -118,7 +119,6 @@ export class OwnerListComponent implements AfterViewInit {
       return [val, this.userEntiteData[index]]
     });
     console.log(mapped);
-    this.sss = mapped;
     this.dataSource = new MatTableDataSource<tableData>(mapped);
     this.dataSource.sort = this.sort;
     this.dataSource.paginator = this.paginator;

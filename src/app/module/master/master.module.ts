@@ -14,7 +14,7 @@ import {MatSelectModule} from '@angular/material/select';
 import {MatDatepickerModule} from '@angular/material/datepicker';
 import {MatProgressSpinnerModule} from '@angular/material/progress-spinner';
 import { MatProgressBarModule } from '@angular/material/progress-bar';
-
+import { NgxSkeletonLoaderModule } from 'ngx-skeleton-loader';
 
 import { MasterComponent } from './master.component';
 import { MasterRoutingModule } from './master-routing.module';
@@ -48,6 +48,7 @@ import { MeasurementUnitsListComponent } from './measurement-units-list/measurem
     MatDatepickerModule,
     MatProgressSpinnerModule,
     MatProgressBarModule,
+    NgxSkeletonLoaderModule,
   ],
   exports: [
     // MasterComponent,

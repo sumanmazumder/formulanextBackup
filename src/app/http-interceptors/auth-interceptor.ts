@@ -53,7 +53,7 @@ export class AuthInterceptor implements HttpInterceptor {
     //   // this.toster.error((err.error.result ?.msg ? err.error.result.msg : "Something Went Wrong"), 'Server Side');
     // }
     // ));
-    this.loaderService.requestStarted()
+    // this.loaderService.requestStarted()
     return this.handler(next, req);
   }
 
@@ -63,10 +63,10 @@ export class AuthInterceptor implements HttpInterceptor {
       tap(
         (event)=>{
           if(event instanceof HttpResponse){
-            this.loaderService.requestEnded();
+            // this.loaderService.requestEnded();
           }
         },(error: HttpErrorResponse)=>{
-          this.loaderService.resetSpinner();
+          // this.loaderService.resetSpinner();
           throw error;
         }
       )
