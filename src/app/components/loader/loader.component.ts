@@ -9,6 +9,9 @@ import { LoaderService } from '../../services/loader.service';
 export class LoaderComponent implements OnInit {
 
   showSpinner = false;
+
+  public row :string[]= [];
+  public column :string[]= [];
   constructor(
     private loaderService: LoaderService,
     private cdRef: ChangeDetectorRef

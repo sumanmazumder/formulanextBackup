@@ -74,8 +74,8 @@ export class LicenceClassEntityComponent implements OnInit {
   editLicenceClass(licenceData){
     console.log(this.licenceClassId);
     this.licenceClassFrom.patchValue({
-      className: licenceData?.className,
-      associatedWeight: licenceData?.associatedWeight,
+      // className: licenceData?.className,
+      // associatedWeight: licenceData?.associatedWeight,
       id: this.licenceClassId
     });
     console.log(licenceData);

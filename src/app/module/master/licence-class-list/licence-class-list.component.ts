@@ -18,6 +18,7 @@ export class LicenceClassListComponent implements AfterViewInit {
   public totalLength : number;
   public loader:boolean = true;
 
+  public TableData :any;
 
   displayedColumns: string[] = ['id', 'className', 'status', 'associatedWeight', 'action'];
   licenceClassTable = new MatTableDataSource<interfacTableData>(tableData);
@@ -33,13 +34,12 @@ export class LicenceClassListComponent implements AfterViewInit {
     this.licenceList();
   }
   licenceList(){
-    // this.loaderService.requestStarted();
+    
     this.licenceClassService.licenceClassList().subscribe(
       (success: any)=>{
         this.totalLength = success.length;
         this.loader = false;
-        // console.log(success.length);
-        // this.loaderService.requestEnded();
+        this.TableData == success;
         this.licenceClassTable = new MatTableDataSource<interfacTableData>(success);
         console.log(this.licenceClassTable.filteredData);
         this.licenceClassTable.sort = this.sort;

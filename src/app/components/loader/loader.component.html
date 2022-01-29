@@ -1,4 +1,11 @@
 <!-- <p>loader works!</p> -->
-<div class="page-overlay-wrapper" *ngIf="showSpinner">
+<!-- <div class="page-overlay-wrapper" *ngIf="showSpinner">
     <mat-spinner></mat-spinner>
+</div> -->
+<div>
+    <table>
+        <tr *ngFor="let kk of row.length">
+            <td *ngFor="let kk of column.length"></td>
+        </tr>
+    </table>
 </div>
