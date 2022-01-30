@@ -13,29 +13,27 @@
         </div>
         <div class="custom-table withoutArrow">
             <mat-table mat-table [dataSource]="brokerTable">
-    
-    
                 <ng-container matColumnDef="id">
                     <mat-header-cell *matHeaderCellDef> Broker id </mat-header-cell>
                     <mat-cell *matCellDef="let element"> {{element.id}} </mat-cell>
                 </ng-container>
-    
-    
+
+
                 <ng-container matColumnDef="brakerName">
                     <mat-header-cell *matHeaderCellDef> Broker Name </mat-header-cell>
                     <mat-cell *matCellDef="let element"> {{element.brakerName}} </mat-cell>
                 </ng-container>
-    
+
                 <ng-container matColumnDef="contactNo">
                     <mat-header-cell *matHeaderCellDef> Contact no </mat-header-cell>
                     <mat-cell *matCellDef="let element"> {{element.contactNo}} </mat-cell>
                 </ng-container>
-    
+
                 <ng-container matColumnDef="status">
                     <mat-header-cell *matHeaderCellDef> Status </mat-header-cell>
                     <mat-cell *matCellDef="let element"> {{element.status}} </mat-cell>
                 </ng-container>
-    
+
                 <ng-container matColumnDef="action">
                     <mat-header-cell *matHeaderCellDef> Action </mat-header-cell>
                     <mat-cell *matCellDef="let element">
@@ -56,17 +54,17 @@
                           </mat-menu>
                     </mat-cell>
                 </ng-container>
-    
-    
+
+
                 <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
                 <mat-row *matRowDef="let row; columns: displayedColumns;" class="example-element-row broker-row"></mat-row>
             </mat-table>
-    
+
             <mat-paginator [pageSizeOptions]="[10, 20, 30]" showFirstLastButtons aria-label="Select page of periodic elements">
             </mat-paginator>
         </div>
-    
-    
+
+
         <!-- <a class="addList" [routerLink]="['/dashboard/vendor/userEntity']" (click)="added('broker')"><img src="assets/images/feather-plus.svg"/></a> -->
         <a class="addList" (click)="added('broker')"><img src="assets/images/feather-plus.svg"/></a>
     </div>

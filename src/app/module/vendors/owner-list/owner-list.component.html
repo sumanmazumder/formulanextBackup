@@ -64,7 +64,7 @@
               Edit</button>
             <!-- <button mat-menu-item (click)="view(tableData.id)"><span class="mat-icon"><img src="assets/images/view.svg"
                   alt="" ></span>View</button> -->
-            <button mat-menu-item (click)="delete(tableData.id)"><span class="mat-icon"><img src="assets/images/delete.svg"
+            <button mat-menu-item (click)="delete(tableData[0]?.id)"><span class="mat-icon"><img src="assets/images/delete.svg"
                   alt=""></span>Delete</button>
           </mat-menu>
         </mat-cell>
@@ -106,7 +106,7 @@
       <!-- <div *matRowDef="let row; columns: ['expandedDetail']" class="example-detail-row"></div> -->
 
     </mat-table>
-    <!-- <mat-paginator 
+    <!-- <mat-paginator
           [length]="dataSource.length"
           [pageSize]="10"
           [pageSizeOptions]="[5, 10, 20]"

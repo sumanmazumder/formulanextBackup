@@ -15,6 +15,11 @@ import { NavigationExtras, Router } from '@angular/router';
   styleUrls: ['./licence-class-list.component.scss']
 })
 export class LicenceClassListComponent implements AfterViewInit {
+  public totalLength : number;
+  public loader:boolean = true;
+
+  public TableData :any;
+  public pagination: any;
   displayedColumns: string[] = ['id', 'className', 'status', 'associatedWeight', 'action'];
   licenceClassTable = new MatTableDataSource<interfacTableData>(tableData);
   @ViewChild(MatPaginator) paginator: MatPaginator;
@@ -22,18 +27,22 @@ export class LicenceClassListComponent implements AfterViewInit {
 
   constructor(
     private licenceClassService: LicenceClassService,
-    private _router: Router,
+    private _router: Router
   ) { }
 
   ngOnInit(): void {
-    this.measurementUnitsAdd();
+    this.licenceList();
+
   }
-  measurementUnitsAdd(){
+  licenceList(){
+
     this.licenceClassService.licenceClassList().subscribe(
       (success: any)=>{
-        console.log(success);
+        this.totalLength = success.length;
+        this.loader = false;
+        this.TableData == success;
         this.licenceClassTable = new MatTableDataSource<interfacTableData>(success);
-        console.log(this.licenceClassTable.filteredData);
+        // console.log(this.licenceClassTable.filteredData);
         this.licenceClassTable.sort = this.sort;
         this.licenceClassTable.paginator = this.paginator;
       },(error)=>{
@@ -44,6 +53,8 @@ export class LicenceClassListComponent implements AfterViewInit {
 
   ngAfterViewInit() {
     this.licenceClassTable.paginator = this.paginator;
+    console.log(this.paginator._displayedPageSizeOptions);
+    this.pagination = this.paginator._displayedPageSizeOptions;
   }
   applyFilter(event: Event) {
     const filterValue = (event.target as HTMLInputElement).value;
@@ -54,13 +65,13 @@ export class LicenceClassListComponent implements AfterViewInit {
     this.licenceClassService.licenceClassDelete(id).subscribe(
       (success)=>{
         console.log(success);
-        this.measurementUnitsAdd();
+        this.licenceList();
       },(error)=>{
         console.log(error);
-        
+
       }
     )
-    
+
   }
   edit(id){
     // console.log(id);

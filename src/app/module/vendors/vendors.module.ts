@@ -6,21 +6,11 @@ import { DriverListComponent } from './driver-list/driver-list.component';
 import { VendorRoutingModule } from './vendors-routing.module';
 import { UserEntityComponent } from './user-entity/user-entity.component';
 import { VendorComponent } from './vendors.component'
-
-import { MatFormFieldModule } from '@angular/material/form-field';
-import {MatDatepickerModule} from '@angular/material/datepicker';
-
-import {MatTabsModule} from '@angular/material/tabs';
-import {MatInputModule} from '@angular/material/input';
-import {MatTableModule} from '@angular/material/table';
-import {MatPaginatorModule} from '@angular/material/paginator';
-import {MatButtonModule} from '@angular/material/button';
-
-import {MatMenuModule} from '@angular/material/menu';
-
-import { FormsModule, ReactiveFormsModule } from '@angular/forms';
-import {MatSelectModule} from '@angular/material/select';
 import { OwnerViewComponent } from './owner-view/owner-view.component';
+
+import { UserEntityDocumentComponent } from './user-entity-document/user-entity-document.component';
+import { localModule } from '../common/local.module';
+
 @NgModule({
   declarations: [
     OwnerListComponent,
@@ -28,21 +18,12 @@ import { OwnerViewComponent } from './owner-view/owner-view.component';
     DriverListComponent,
     VendorComponent,
     UserEntityComponent,
-    OwnerViewComponent
+    OwnerViewComponent,
+    UserEntityDocumentComponent
   ],
   imports: [
-    CommonModule,
-    VendorRoutingModule,
-    MatTabsModule,
-    MatInputModule,
-    MatTableModule,
-    MatPaginatorModule,
-    MatButtonModule,
-    MatMenuModule,
-    MatFormFieldModule,
-    FormsModule, ReactiveFormsModule,
-    MatSelectModule,
-    MatDatepickerModule,
+
+    localModule
   ],
   exports: [
     OwnerListComponent,

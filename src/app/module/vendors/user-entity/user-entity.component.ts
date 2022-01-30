@@ -26,6 +26,12 @@ import { LicenceClassService } from '../../../services/licence-class.service';
   styleUrls: ['./user-entity.component.scss']
 })
 export class UserEntityComponent implements OnInit {
+
+  isLinear = true;
+  firstFormGroup: FormGroup;
+  secondFormGroup: FormGroup;
+
+
   public ownerData: OwnerInterface;
   public isCompany: boolean = true;
   public isActive: boolean = true;
@@ -211,6 +217,7 @@ export class UserEntityComponent implements OnInit {
     private brokerService: BrokerService,
     private driverService: DriverService,
     private licenceClassService: LicenceClassService,
+    private _formBuilder: FormBuilder
   ) {
     // console.log(this.ownerData);
   }
@@ -262,9 +269,7 @@ export class UserEntityComponent implements OnInit {
 
     // switch(this.urlData == true){
       // case this.urlData == 'owner' :
-      if(this.urlData == 'owner'){
-
-      
+      if(this.urlData == 'owner' && this.isLinear == false){
       console.log("Owner");
       this.Userentitieseervice.userEntities(this.ownerFrom.value.UserEntity).pipe(
         map(resp => {
@@ -304,7 +309,7 @@ export class UserEntityComponent implements OnInit {
         (resp) => {
           console.log(resp);
           // this.postUserEntityMamager.sendMessageObj({ Message: "UECreated", UE_id: 'resp.id', caller: this.Userentitieseervice.getCaller('owner') })
-          this._router.navigateByUrl('dashboard/vendor/ownerList');
+          // this._router.navigateByUrl('dashboard/vendor/ownerList');
         },
         (error) => {
           console.log(error);
@@ -316,9 +321,9 @@ export class UserEntityComponent implements OnInit {
 
 
       // case this.urlData == 'broker' :
-      else if(this.urlData == 'broker'){
+      else if(this.urlData == 'broker' && this.isLinear == false){
 
-      
+
         console.log("Broker");
         this.Userentitieseervice.userEntities(this.ownerFrom.value.UserEntity).pipe(
           map(resp => {
@@ -368,9 +373,9 @@ export class UserEntityComponent implements OnInit {
     }
 
       // case this.urlData == 'driver' :
-      else if(this.urlData == 'driver'){
-        
-      
+      else if(this.urlData == 'driver' && this.isLinear == false){
+
+
       console.log("Driver");
         this.Userentitieseervice.userEntities(this.driverFrom.value.UserEntity).pipe(
           map(resp => {
@@ -419,7 +424,6 @@ export class UserEntityComponent implements OnInit {
       }
     // }
     // switch case end
-    
 
 
 
@@ -431,7 +435,8 @@ export class UserEntityComponent implements OnInit {
 
 
 
-    
+
+
 
   }
 }

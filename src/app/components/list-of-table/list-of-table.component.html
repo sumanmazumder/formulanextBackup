@@ -1,24 +1,21 @@
-<!-- <p>licence-class-list works!</p> -->
-<!-- <app-loader></app-loader> -->
-
-
-<master-app></master-app>
-<app-list-of-table></app-list-of-table>
-<div class="list">
+<div class="list" >
     <div class="header">
         <h3>Licence class list</h3>
         <div class="header-right">
             <form class="example-form">
                 <mat-form-field appearance="outline" class="search_list">
                     <mat-label>Search for list</mat-label>
-                    <input matInput (keyup)="applyFilter($event)" placeholder="Search for owner list" #input>
+                    <input placeholder="Search for owner list" />
+                    <!-- <input matInput (keyup)="applyFilter($event)" placeholder="Search for owner list" #input> -->
                 </mat-form-field>
             </form>
         </div>
     </div>
-    <div class="custom-table withoutArrow">
-            <app-loader [chandan]="'123'"></app-loader>
+
+    <!-- <div class="custom-table withoutArrow">
         <mat-table mat-table [dataSource]="licenceClassTable">
+
+
             <ng-container matColumnDef="id">
                 <mat-header-cell *matHeaderCellDef> id </mat-header-cell>
                 <mat-cell *matCellDef="let element"> {{element.id}} </mat-cell>
@@ -66,16 +63,12 @@
             <mat-row *matRowDef="let row; columns: displayedColumns;" class="example-element-row"></mat-row>
         </mat-table>
 
-        <!-- <ngx-skeleton-loader count="{{5}}" appearance="line" *ngIf="loader"></ngx-skeleton-loader> -->
-
-
         <mat-paginator [pageSizeOptions]="[10, 20, 30]" showFirstLastButtons aria-label="Select page of periodic elements">
         </mat-paginator>
-    </div>
+    </div> -->
 
 
     <a class="addList" [routerLink]="['/dashboard/master/licenceClassEntity']">
         <img src="assets/images/feather-plus.svg" />
     </a>
 </div>
-
