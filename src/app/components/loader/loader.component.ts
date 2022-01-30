@@ -20,12 +20,11 @@ export class LoaderComponent implements OnChanges {
   }
 
   ngOnInit(): void {
+    this.cdRef.detectChanges();
     console.log(this.chandan);
-    
   }
   
   ngOnChanges(changes: SimpleChanges) {
-    // changes.prop contains the old and the new value...
     console.log(this.chandan);
     
     console.log("changes", changes);
