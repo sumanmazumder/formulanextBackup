@@ -1,5 +1,6 @@
 import { Component, OnInit, Input } from '@angular/core';
 // import { LicenceClassListComponent } from '.././../module/master/licence-class-list/licence-class-list.component'
+
 @Component({
   selector: 'app-list-of-table',
   templateUrl: './list-of-table.component.html',

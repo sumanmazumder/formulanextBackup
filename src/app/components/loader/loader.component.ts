@@ -1,4 +1,4 @@
-import { Component, OnInit, ChangeDetectorRef } from '@angular/core';
+import { Component, OnInit, ChangeDetectorRef, Input, OnChanges, SimpleChanges } from '@angular/core';
 import { LoaderService } from '../../services/loader.service';
 
 @Component({
@@ -6,29 +6,30 @@ import { LoaderService } from '../../services/loader.service';
   templateUrl: './loader.component.html',
   styleUrls: ['./loader.component.scss']
 })
-export class LoaderComponent implements OnInit {
+export class LoaderComponent implements OnChanges {
 
   showSpinner = false;
-
-  public row :string[]= [];
-  public column :string[]= [];
+  @Input() chandan : any;
+  public row :any[]= [1,2,3,4,5];
+  public column :any[]= [1,2,3,4,5];
   constructor(
     private loaderService: LoaderService,
     private cdRef: ChangeDetectorRef
   ) { 
-    
+    console.log(this.chandan);
   }
 
   ngOnInit(): void {
-    this.Init();
+    console.log(this.chandan);
+    
   }
+  
+  ngOnChanges(changes: SimpleChanges) {
+    // changes.prop contains the old and the new value...
+    console.log(this.chandan);
+    
+    console.log("changes", changes);
 
-  Init(){
-    this.loaderService.getSpinnerObervable().subscribe(
-      (status)=>{
-        this.showSpinner = status == "start";
-        this.cdRef.detectChanges();
-      }
-    )
   }
+  
 }

@@ -17,6 +17,7 @@
         </div>
     </div>
     <div class="custom-table withoutArrow">
+            <app-loader [chandan]="'123'"></app-loader>
         <mat-table mat-table [dataSource]="licenceClassTable">
             <ng-container matColumnDef="id">
                 <mat-header-cell *matHeaderCellDef> id </mat-header-cell>
@@ -65,9 +66,9 @@
             <mat-row *matRowDef="let row; columns: displayedColumns;" class="example-element-row"></mat-row>
         </mat-table>
 
-        <ngx-skeleton-loader count="{{5}}" appearance="line" *ngIf="loader"></ngx-skeleton-loader>
-
+        <!-- <ngx-skeleton-loader count="{{5}}" appearance="line" *ngIf="loader"></ngx-skeleton-loader> -->
         
+
         <mat-paginator [pageSizeOptions]="[10, 20, 30]" showFirstLastButtons aria-label="Select page of periodic elements">
         </mat-paginator>
     </div>

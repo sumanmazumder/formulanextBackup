@@ -19,10 +19,12 @@ import { NotFoundComponent } from './components/not-found/not-found.component';
 import { SidePanelComponent } from './components/side-panel/side-panel.component';
 import { DashboardComponent } from './components/dashboard/dashboard.component';
 import { LoginComponent } from './components/login/login.component';
+
+
+import { ListOfTableComponent } from './components/list-of-table/list-of-table.component';
+import { localModule } from './module/common/local.module';
 import { LoaderComponent } from './components/loader/loader.component';
 
-// import { ListOfTableComponent } from './components/list-of-table/list-of-table.component';
-import { localModule } from './module/common/local.module';
 @NgModule({
   declarations: [
     AppComponent,
@@ -30,9 +32,8 @@ import { localModule } from './module/common/local.module';
     NotFoundComponent, DashboardComponent, SidePanelComponent,
     AddClassDirective,
     LoginComponent,
+    ListOfTableComponent,
     LoaderComponent,
-    // ListOfTableComponent,
-    
   ],
   imports: [
     BrowserModule,

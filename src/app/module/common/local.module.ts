@@ -3,7 +3,7 @@ import { NgxSkeletonLoaderModule } from 'ngx-skeleton-loader';
 
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
-import { MatFormFieldModule } from '@angular/material/form-field';
+import {MatFormFieldModule} from '@angular/material/form-field';
 import {MatTabsModule} from '@angular/material/tabs';
 import {MatInputModule} from '@angular/material/input';
 import {MatTableModule} from '@angular/material/table';
@@ -25,11 +25,13 @@ import { ListOfTableComponent } from '../../components/list-of-table/list-of-tab
 import { RouterModule } from '@angular/router';
 import { CommonModule } from '@angular/common';
 import { HttpClientModule } from '@angular/common/http';
+import { LoaderComponent } from '../../components/loader/loader.component';
 
 
 @NgModule({
   declarations: [
-    ListOfTableComponent,
+    // ListOfTableComponent,
+    // LoaderComponent,
   ],
   imports: [
     // BrowserModule,
@@ -85,7 +87,8 @@ import { HttpClientModule } from '@angular/common/http';
     MatRippleModule,
     HttpClientModule,
     MatNativeDateModule,
-    ListOfTableComponent,
+    // ListOfTableComponent,
+    // LoaderComponent,
   ]
 })
 export class localModule { }

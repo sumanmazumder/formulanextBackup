@@ -19,7 +19,7 @@ export class LicenceClassListComponent implements AfterViewInit {
   public loader:boolean = true;
 
   public TableData :any;
-
+  public pagination: any;
   displayedColumns: string[] = ['id', 'className', 'status', 'associatedWeight', 'action'];
   licenceClassTable = new MatTableDataSource<interfacTableData>(tableData);
   @ViewChild(MatPaginator) paginator: MatPaginator;
@@ -32,6 +32,7 @@ export class LicenceClassListComponent implements AfterViewInit {
 
   ngOnInit(): void {
     this.licenceList();
+    
   }
   licenceList(){
     
@@ -41,7 +42,7 @@ export class LicenceClassListComponent implements AfterViewInit {
         this.loader = false;
         this.TableData == success;
         this.licenceClassTable = new MatTableDataSource<interfacTableData>(success);
-        console.log(this.licenceClassTable.filteredData);
+        // console.log(this.licenceClassTable.filteredData);
         this.licenceClassTable.sort = this.sort;
         this.licenceClassTable.paginator = this.paginator;
       },(error)=>{
@@ -52,6 +53,8 @@ export class LicenceClassListComponent implements AfterViewInit {
 
   ngAfterViewInit() {
     this.licenceClassTable.paginator = this.paginator;
+    console.log(this.paginator._displayedPageSizeOptions);
+    this.pagination = this.paginator._displayedPageSizeOptions;
   }
   applyFilter(event: Event) {
     const filterValue = (event.target as HTMLInputElement).value;
